@@ -22,7 +22,7 @@ const Home = ({data}) => (
 )
 
 export async function getServerSideProps(context) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_RECURRENT_URL}api/name`)
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}api/name`)
   const data = res.data;
 
   if (!data) {
@@ -30,8 +30,7 @@ export async function getServerSideProps(context) {
       notFound: true,
     }
   }
-  console.log(process.env.NEXT_PUBLIC_RECURRENT_URL)
-  console.log(data)
+
   return {
     props: {data}, // will be passed to the page component as props
   }

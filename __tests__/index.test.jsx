@@ -10,13 +10,13 @@ const mock = new MockAdapter(axios);
 
 describe('Home', () => {
   beforeEach(() => {
-    mock.onGet(`localhost:3000/api/name`).reply(200, {name: "test"});
+    mock.onGet(`${process.env.NEXT_PUBLIC_URL}api/name`).reply(200, {name: "Tester"});
   });
   it('renders a heading (passes)', () => {
     render(<Home />)
 
     const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js.*/i,
+      name: /welcome to next\.js/i,
     });
 
     expect(heading).toBeInTheDocument();
@@ -27,10 +27,10 @@ describe('Home', () => {
       route: `/`,
     });
 
-    const { container } = render(page);
+    render(page);
 
     const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js.*/i,
+      name: /welcome to next\.js/i,
     })
     expect(heading).toBeInTheDocument();
   });
@@ -40,12 +40,14 @@ describe('Home', () => {
       route: `/`,
     });
 
+    render(page);
+
     const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js.*/i,
+      name: /welcome to next\.js Tester/i,
     });
 
   });
-  
+
   it("renders a snapshot correctly", async () => {
     const { page } = await getPage({
       route: `/`,
@@ -53,7 +55,9 @@ describe('Home', () => {
     const { container } = render(page);
 
     expect(
-      await screen.findByRole("heading", { name: /Let’s get started!/i })
+      await screen.findByRole("heading", { 
+        name: /welcome to next\.js Tester/i
+      })
     ).toBeVisible();
 
     expect(container).toMatchSnapshot();
