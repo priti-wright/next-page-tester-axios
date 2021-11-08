@@ -1,4 +1,4 @@
-# Next.js + Jest
+# Next.js + Jest v27 + next-page-tester
 
 This example is a minimal example of 
 
@@ -16,8 +16,8 @@ This includes Next.js, axios, next-page-tester, jest and axios-mock-adapter!
 In your terminal, run the following commands:
 
 ```bash
-npm install
-npm run dev
+npm install;
+npm run dev;
 ```
 
 ## Run Jest Tests
@@ -25,5 +25,6 @@ npm run dev
 In your terminal, run the following command:
 
 ```bash
-npm test
+npm install;
+npm test;
 ```
